@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import css from './ContactForm.module.css';
-import { addContact } from '../../redux/contactSlice';
+import { addContact } from '../../redux/operations';
 
 const initialValues = {
   name: '',
@@ -75,7 +75,6 @@ export const ContactForm = () => {
             name="number"
             id="inputTel"
             className="form-control"
-            placeholder="###-##-##"
           />
           <ErrorMessage name="number" component="div" />
         </div>

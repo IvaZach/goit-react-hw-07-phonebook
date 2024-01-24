@@ -2,7 +2,7 @@ import React from 'react';
 
 import ContactListItem from 'components/ContactListItem/ContactListItem';
 import { useSelector } from 'react-redux';
-import { getContacts, getFilter } from '../../redux/selectors';
+import { selectContacts, selectFilter } from '../../redux/selectors';
 
 const getVisibleContacts = (contacts, query) => {
   if (query !== '') {
@@ -14,10 +14,11 @@ const getVisibleContacts = (contacts, query) => {
 };
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
 
   const visibleContacts = getVisibleContacts(contacts, filter);
+  console.log(visibleContacts);
 
   return (
     <>
