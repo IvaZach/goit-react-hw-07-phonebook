@@ -1,4 +1,4 @@
-# goit-react-hw-06-phonebook
+# goit-react-hw-07-phonebook
 
-Refactor the "Contact Book" application code by adding state control using the [Redux Toolkit] library. 
+Perform refactoring of the Contact Book application code. Add communication with the backend for storing contacts.
 
