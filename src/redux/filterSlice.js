@@ -12,6 +12,5 @@ const filterSlice = createSlice({
   },
 });
 
-console.log(filterSlice);
 export const { findContact } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;
