@@ -1,10 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import css from './ContactForm.module.css';
 import { addContact } from '../../redux/operations';
+import { selectContacts } from '../../redux/selectors';
 
 const initialValues = {
   name: '',
@@ -32,18 +33,25 @@ let schema = yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
+  const listContacts = useSelector(selectContacts);
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-
     const { name, number } = values;
 
-    const contact = {
+    const newContact = {
       name: name.trim(),
       number: number.trim(),
     };
 
-    dispatch(addContact(contact));
+    const isNewContact = listContacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isNewContact) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
+
+    dispatch(addContact(newContact));
     resetForm();
   };
   return (
